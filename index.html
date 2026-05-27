@@ -45,10 +45,13 @@ nav.scrolled .nav-cta:hover{background:var(--navy-mid)}
 .hamburger span{width:22px;height:2px;background:white;border-radius:2px}
 nav.scrolled .hamburger span{background:var(--navy)}
 
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;background:linear-gradient(155deg,#071828 0%,#0A2540 45%,#0D3560 100%);overflow:hidden}
-.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 65% 45%,rgba(0,184,240,0.2) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 5% 85%,rgba(93,216,245,0.1) 0%,transparent 55%)}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1px,transparent 1px);background-size:40px 40px}
-.hero-content{position:relative;z-index:2;padding:0 6%;max-width:1280px;margin:0 auto;width:100%;padding-top:5.5rem;padding-bottom:3rem}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;z-index:0}
+.hero-bg-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-bg-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(155deg,rgba(5,15,28,0.88) 0%,rgba(8,28,55,0.80) 45%,rgba(10,35,72,0.70) 100%)}
+.hero-glow{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 70% 55% at 65% 45%,rgba(0,184,240,0.15) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 5% 85%,rgba(93,216,245,0.08) 0%,transparent 55%)}
+.hero-dots{position:absolute;inset:0;z-index:2;background-image:radial-gradient(rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px}
+.hero-content{position:relative;z-index:3;padding:0 6%;max-width:1280px;margin:0 auto;width:100%;padding-top:5.5rem;padding-bottom:3rem}
 .hero-pill{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(0,184,240,0.12);border:1px solid rgba(0,184,240,0.28);border-radius:100px;padding:0.35rem 0.9rem;margin-bottom:1.6rem}
 .hero-pill .dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 2.2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.35}}
@@ -65,13 +68,13 @@ nav.scrolled .hamburger span{background:var(--navy)}
 .badge{display:flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.65);font-size:0.8rem;font-weight:500}
 .badge-icon{width:28px;height:28px;background:rgba(0,184,240,0.14);border:1px solid rgba(0,184,240,0.22);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .badge-icon svg{width:12px;height:12px;stroke:var(--cyan);fill:none;stroke-width:2.2}
-.hero-cards{position:absolute;right:6%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1rem;z-index:2}
+.hero-cards{position:absolute;right:6%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1rem;z-index:3}
 .hcard{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.11);backdrop-filter:blur(12px);border-radius:14px;padding:1rem 1.3rem;text-align:center;animation:float 3.5s ease-in-out infinite}
 .hcard:nth-child(2){animation-delay:-1.75s}
 .hcard .n{font-weight:800;font-size:1.6rem;color:#fff;display:block;line-height:1}
 .hcard .l{font-size:0.68rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.2rem}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:1}
+.hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:4}
 .hero-wave svg{display:block;width:100%;height:70px}
 
 section{padding:5.5rem 6%}
@@ -92,13 +95,17 @@ section{padding:5.5rem 6%}
 
 .sf{background:var(--bg2)}
 .sf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
-.sfc{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:1.8rem 1.6rem;transition:all 0.3s;position:relative;overflow:hidden}
+.sfc{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:0;transition:all 0.3s;position:relative;overflow:hidden}
+.sfc-img{width:100%;height:160px;overflow:hidden;border-radius:16px 16px 0 0}
+.sfc-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.5s ease;display:block}
+.sfc:hover .sfc-img img{transform:scale(1.05)}
+.sfc-body{padding:1.4rem 1.6rem 1.6rem}
 .sfc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--aqua));transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease;border-radius:18px 18px 0 0}
 .sfc:hover{box-shadow:0 12px 35px rgba(0,37,64,0.1);transform:translateY(-3px);border-color:rgba(0,184,240,0.2)}
 .sfc:hover::before{transform:scaleX(1)}
 .sn{font-size:0.68rem;font-weight:700;color:rgba(0,184,240,0.5);letter-spacing:0.1em;margin-bottom:1rem;display:block}
-.sfc h3{font-size:1.05rem;color:var(--navy);margin-bottom:0.5rem;letter-spacing:-0.02em}
-.sfc p{font-size:0.82rem;color:var(--text-soft);line-height:1.6}
+.sfc-body h3{font-size:1.05rem;color:var(--navy);margin-bottom:0.5rem;letter-spacing:-0.02em}
+.sfc-body p{font-size:0.82rem;color:var(--text-soft);line-height:1.6}
 .sl{display:inline-flex;align-items:center;gap:0.25rem;color:var(--cyan);font-size:0.78rem;font-weight:700;text-decoration:none;margin-top:1rem;transition:gap 0.2s}
 .sl:hover{gap:0.45rem}
 .sl svg{width:11px;height:11px;stroke:var(--cyan);fill:none;stroke-width:2.5}
@@ -108,8 +115,10 @@ section{padding:5.5rem 6%}
 .ba-vis{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3;cursor:ew-resize;user-select:none;box-shadow:0 20px 50px rgba(0,37,64,0.15)}
 .ba-before,.ba-after{position:absolute;inset:0}
 .ba-after{clip-path:inset(0 50% 0 0)}
-.ba-bimg{width:100%;height:100%;background:linear-gradient(140deg,#1C4A1C 0%,#2E7A2E 40%,#4AA04A 70%,#1C3A1C 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem}
-.ba-aimg{width:100%;height:100%;background:linear-gradient(140deg,#0A2540 0%,#0A5490 40%,#00A8D8 75%,#7EEBFF 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem}
+.ba-bimg{width:100%;height:100%;background:linear-gradient(140deg,#1C4A1C 0%,#2E7A2E 40%,#4AA04A 70%,#1C3A1C 100%);display:flex;align-items:flex-end;justify-content:flex-start;padding:1rem;position:relative;overflow:hidden}
+.ba-bimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.6) brightness(0.75) hue-rotate(80deg)}
+.ba-aimg{width:100%;height:100%;background:linear-gradient(140deg,#0A2540 0%,#0A5490 40%,#00A8D8 75%,#7EEBFF 100%);display:flex;align-items:flex-end;justify-content:flex-end;padding:1rem;position:relative;overflow:hidden}
+.ba-aimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .ba-lbl{position:absolute;bottom:0.9rem;left:0.9rem;background:rgba(0,0,0,0.55);color:#fff;font-size:0.7rem;font-weight:700;padding:0.28rem 0.75rem;border-radius:100px;letter-spacing:0.05em;text-transform:uppercase}
 .ba-lbl.r{left:auto;right:0.9rem}
 .ba-handle{position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.9);left:50%;transform:translateX(-50%);cursor:ew-resize;z-index:10}
@@ -124,7 +133,8 @@ section{padding:5.5rem 6%}
 
 .why{background:var(--bg)}
 .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.why-visual{border-radius:22px;overflow:hidden;position:relative;aspect-ratio:3/4;background:linear-gradient(155deg,#0A2540 0%,#0A5A9A 50%,#00B8F0 85%,#7EEBFF 100%)}
+.why-visual{border-radius:22px;overflow:hidden;position:relative;aspect-ratio:3/4;background:#0A2540}
+.why-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .why-voverlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.8rem;background:linear-gradient(to top,rgba(5,18,35,0.82) 0%,transparent 55%)}
 .why-vbadge{background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:0.9rem 1.3rem;display:inline-block}
 .why-vbadge .vn{font-weight:800;font-size:1.7rem;color:#fff;display:block;line-height:1}
@@ -235,6 +245,10 @@ footer{background:#050E1A;color:rgba(255,255,255,0.45);padding:3.5rem 6% 2rem}
 </nav>
 
 <section class="hero" id="home">
+  <div class="hero-bg-img">
+    <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1920&q=80&fit=crop&crop=center" alt="Crystal clear swimming pool" loading="eager">
+  </div>
+  <div class="hero-bg-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-dots"></div>
   <div class="hero-content">
@@ -287,12 +301,30 @@ footer{background:#050E1A;color:rgba(255,255,255,0.45);padding:3.5rem 6% 2rem}
     <h2 class="s-title">Premium Pool Care,<br>Every Single Visit</h2>
     <p class="s-sub">8+ years of South Florida expertise behind every service we offer.</p>
     <div class="sf-grid">
-      <div class="sfc fu"><span class="sn">01</span><h3>Weekly Pool Cleaning</h3><p>Full-service weekly visits: skim, brush, vacuum, and balance. Your pool, always ready to swim.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sfc fu"><span class="sn">02</span><h3>Pool Maintenance</h3><p>Monthly deep inspections, equipment checks, and comprehensive chemical treatment plans.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sfc fu"><span class="sn">03</span><h3>Pool Repairs</h3><p>Leaks, tiles, plumbing, pumps. Rapid diagnosis and certified repair on all pool systems.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sfc fu"><span class="sn">04</span><h3>Pool Equipment</h3><p>Heaters, automation systems, variable-speed pumps. We install and configure the best brands.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sfc fu"><span class="sn">05</span><h3>Green Pool Cleanup</h3><p>Shock, algaecide and a proven protocol. We rescue any green pool — guaranteed or we come back free.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sfc fu"><span class="sn">06</span><h3>Emergency Service</h3><p>Urgent issue? We respond fast. Same-day emergency visits available 7 days a week across South Florida.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sfc fu">
+        <div class="sfc-img"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=75&fit=crop&crop=center" alt="Weekly pool cleaning service" loading="lazy"></div>
+        <div class="sfc-body"><span class="sn">01</span><h3>Weekly Pool Cleaning</h3><p>Full-service weekly visits: skim, brush, vacuum, and balance. Your pool, always ready to swim.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="sfc fu">
+        <div class="sfc-img"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&q=75&fit=crop&crop=center" alt="Pool maintenance and inspection" loading="lazy"></div>
+        <div class="sfc-body"><span class="sn">02</span><h3>Pool Maintenance</h3><p>Monthly deep inspections, equipment checks, and comprehensive chemical treatment plans.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="sfc fu">
+        <div class="sfc-img"><img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&q=75&fit=crop&crop=center" alt="Pool repair services" loading="lazy"></div>
+        <div class="sfc-body"><span class="sn">03</span><h3>Pool Repairs</h3><p>Leaks, tiles, plumbing, pumps. Rapid diagnosis and certified repair on all pool systems.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="sfc fu">
+        <div class="sfc-img"><img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=600&q=75&fit=crop&crop=center" alt="Pool equipment installation" loading="lazy"></div>
+        <div class="sfc-body"><span class="sn">04</span><h3>Pool Equipment</h3><p>Heaters, automation systems, variable-speed pumps. We install and configure the best brands.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="sfc fu">
+        <div class="sfc-img"><img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=75&fit=crop&crop=center" alt="Green pool recovery service" loading="lazy"></div>
+        <div class="sfc-body"><span class="sn">05</span><h3>Green Pool Cleanup</h3><p>Shock, algaecide and a proven protocol. We rescue any green pool — guaranteed or we come back free.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="sfc fu">
+        <div class="sfc-img"><img src="https://images.unsplash.com/photo-1530053969600-caed2596d242?w=600&q=75&fit=crop&crop=center" alt="Emergency pool service" loading="lazy"></div>
+        <div class="sfc-body"><span class="sn">06</span><h3>Emergency Service</h3><p>Urgent issue? We respond fast. Same-day emergency visits available 7 days a week across South Florida.</p><a href="#" class="sl">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -300,8 +332,8 @@ footer{background:#050E1A;color:rgba(255,255,255,0.45);padding:3.5rem 6% 2rem}
 <section class="ba">
   <div class="si ba-inner">
     <div class="ba-vis" id="baSlider">
-      <div class="ba-before"><div class="ba-bimg"><svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span style="color:rgba(255,255,255,0.35);font-size:0.8rem;font-weight:600">Green &amp; algae-filled</span></div><div class="ba-lbl">Before</div></div>
-      <div class="ba-after" id="baAfter"><div class="ba-aimg"><svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span style="color:rgba(255,255,255,0.75);font-size:0.8rem;font-weight:600">Crystal clear</span></div><div class="ba-lbl r">After</div></div>
+      <div class="ba-before"><div class="ba-bimg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&fit=crop" alt="Green pool before cleaning" loading="lazy"><div class="ba-lbl">Before</div></div></div>
+      <div class="ba-after" id="baAfter"><div class="ba-aimg"><img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80&fit=crop" alt="Crystal clear pool after cleaning" loading="lazy"><div class="ba-lbl r">After</div></div></div>
       <div class="ba-handle" id="baHandle"><div class="ba-circle"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg></div></div>
     </div>
     <div class="ba-text">
@@ -322,6 +354,7 @@ footer{background:#050E1A;color:rgba(255,255,255,0.45);padding:3.5rem 6% 2rem}
 <section class="why" id="about">
   <div class="si why-inner">
     <div class="why-visual">
+      <img src="https://images.unsplash.com/photo-1562184552-997c461abbe6?w=800&q=80&fit=crop&crop=center" alt="Professional pool technician at work" loading="lazy">
       <div class="why-voverlay"><div class="why-vbadge"><span class="vn">8+ Years</span><span class="vl">Serving South Florida</span></div></div>
     </div>
     <div>
